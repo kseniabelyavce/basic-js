@@ -4,8 +4,8 @@ module.exports = function getSeason(date) {
   if (date === undefined) {
     return 'Unable to determine the time of year!'
   }
-  else if (typeof date !== 'object' || !date) {
-    throw Error; 
+  if (isNaN(Date.parse(date)) || Object.values(date).length !== 0) {
+    throw  new Error(); 
   }
 
   let month = date.getMonth();

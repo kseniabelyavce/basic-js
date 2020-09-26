@@ -3,7 +3,7 @@ const CustomError = require("../extensions/custom-error");
 module.exports = function transform(arr) {
   let transformed = [];
   if (!Array.isArray(arr)) {
-    throw Error;
+    throw new Error();
   }
   for (let i = 0; i < arr.length; i++) {
     let char = arr[i];
@@ -45,9 +45,3 @@ module.exports = function transform(arr) {
   }
   return transformed;
   }
-
-// console.log(transform([1, 2, 3, '--discard-next', 1337, '--double-prev', 4, 5]))
-// console.log(transform([1, 2, 3, '--double-next', 1337, '--double-prev', 4, 5]))
-// console.log(transform([1, 2, 3, '--discard-next', 1337, '--discard-prev', 4, 5]))
-// console.log(transform([1, 2, 3, '--double-next', 1337, '--discard-prev', 4, 5]))
-

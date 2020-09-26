@@ -1,48 +1,37 @@
 const CustomError = require('../extensions/custom-error');
 
+
+
 const chainMaker = {
-	chains: [],
+	chain: [],
 
 	getLength() {
-		return this.chains.length;
+		return this.chain.length;
 	},
 
 	addLink(value) {
-		if (typeof value === 'undefined') {
-			this.chains.push('()');
-		} else {
-			this.chains.push(String(value));
-		}
-		return this;
+    this.chain.push(`( ${String(value)} )`);
+    return this;
   },
   
 	removeLink(position) {
-		if (position > this.chains.length || position < 1) {
-			throw Error;
-		} else {
-			this.chains[position - 1] = null;
-			this.chains = this.chains.filter((el) => el !== null);
-			return this;
+		if (position > this.chain.length || position < 1 || isNaN(position)) {
+      this.chain = [];
+			throw  new Error();
 		}
+    this.chain.splice(position - 1, 1);
+		return this;
   },
   
 	reverseChain() {
-    if (this.chains.length) {
-      this.chains = this.chains.reverse();
-    }
+    this.chain = this.chain.reverse();
 		return this;
   },
   
 	finishChain() {
-		let str = '';
-		for (let i = 0; i < this.chains.length; i++) {
-			if (i !== this.chains.length - 1) {
-				str += `( ${this.chains[i]} )~~`;
-			} else {
-				str += `( ${this.chains[i]} )`;
-			}
-		}
-		return str;
+    let finishedChain = this.chain.join("~~");
+    this.chain = [];
+    return finishedChain;
 	},
 };
 
