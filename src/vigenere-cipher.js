@@ -8,7 +8,7 @@ class VigenereCipheringMachine {
   encrypt(message, key) {
     let cipher = "";
     if (message === undefined || key === undefined) {
-      throw 'Error';
+      throw Error;
     }
     
     for (let i = 0, j = 0; i < message.length; i++) {
@@ -34,7 +34,7 @@ class VigenereCipheringMachine {
   decrypt(message, key) {
     let cipher = "";
     if (message === undefined || key === undefined) {
-      throw 'Error';
+      throw Error;
     }
     
     for (let i = 0, j = 0; i < message.length; i++) {

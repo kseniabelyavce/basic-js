@@ -3,7 +3,7 @@ const CustomError = require("../extensions/custom-error");
 module.exports = function transform(arr) {
   let transformed = [];
   if (!Array.isArray(arr)) {
-    throw 'Error';
+    throw Error;
   }
   for (let i = 0; i < arr.length; i++) {
     let char = arr[i];
